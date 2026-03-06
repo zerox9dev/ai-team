@@ -50,6 +50,19 @@ Done or back to specific stage
 3. Each agent saves output to `.pipeline/`
 4. Next agent ALWAYS reads all previous outputs
 
+### Contracts (quality gates)
+Every agent validates their output before passing to the next stage. Read from `.contracts/`:
+
+| Contract | Validates | Key rule |
+|----------|-----------|----------|
+| `.contracts/prd.md` | PM output | Must have user stories, acceptance criteria, scope |
+| `.contracts/design.md` | Designer output | Must have flows, states, responsive, edge cases |
+| `.contracts/code.md` | Engineer output | Must follow stack, no scope creep, no dead code |
+| `.contracts/qa.md` | QA output | Every acceptance criterion tested, bugs described |
+| `.contracts/review.md` | Final gate | All contracts verified, max 3 rework cycles |
+
+**Rule:** If output fails its contract → re-run that stage. Do NOT proceed.
+
 ### Skills (shared context)
 Before starting, read relevant files from `.skills/`:
 
