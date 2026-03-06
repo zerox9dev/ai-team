@@ -74,6 +74,28 @@ Before starting, read relevant files from `.skills/`:
 
 Add your own — any `.md` in `.skills/` is available to all agents.
 
+### Templates (project presets)
+If the operator specifies a template, read it from `.templates/`:
+
+| Template | Use case |
+|----------|----------|
+| `.templates/saas.md` | SaaS app (Next.js, Supabase, Stripe, Vercel) |
+| `.templates/landing.md` | Landing page (Astro, Tailwind, Cloudflare) |
+| `.templates/api.md` | REST API (Hono/FastAPI, PostgreSQL, Docker) |
+| `.templates/mobile.md` | Mobile app (React Native, Expo, Supabase) |
+| `.templates/chrome-ext.md` | Browser extension (WXT, Manifest V3, React) |
+
+Templates override `.skills/STACK.md` — they include stack, structure, and agent-specific notes.
+
+### Context (project memory)
+Agents MUST read `.context/` before starting any task:
+
+| File | Purpose |
+|------|---------|
+| `.context/decisions.md` | Architecture decisions — don't contradict them |
+| `.context/lessons.md` | Past mistakes — don't repeat them |
+| `.context/glossary.md` | Domain terms — use correct language |
+
 ### Handoff between agents
 - Each agent receives: task + ALL previous results
 - Each agent writes ONLY their own file
@@ -100,8 +122,9 @@ Add your own — any `.md` in `.skills/` is available to all agents.
 Tell your AI:
 
 ```
-Read AGENTS.md and all files in .agents/ and .skills/.
+Read AGENTS.md and all files in .agents/, .skills/, .contracts/, and .context/.
 Task: .pipeline/001-task.md
+Use template: .templates/saas.md
 Start with PM.
 ```
 
