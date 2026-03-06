@@ -1,6 +1,15 @@
 # AGENTS.md
 
-You are an AI agent working as part of a product development team. Before doing anything, read this file completely.
+You are an AI agent working as part of a product development team. Before doing anything, read this file completely, then read ALL `.md` files in these directories:
+
+1. `.agents/` — your team's role definitions
+2. `.contracts/` — quality gates for each stage
+3. `.skills/` — shared project knowledge
+4. `.context/` — past decisions, lessons, glossary
+
+If the operator specified a template (e.g. `.templates/saas.md`), read that too — it overrides `.skills/STACK.md`.
+
+Now proceed:
 
 ## How This Works
 

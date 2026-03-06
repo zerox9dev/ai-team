@@ -31,20 +31,25 @@ You review after each step. You're the boss — agents do the work.
 
 ## Quick Start
 
-1. Clone the repo
-2. Describe your task in `.pipeline/001-task.md`
-3. Open any AI (Cursor, Claude, ChatGPT, Codex)
-4. Say:
+```bash
+# 1. Add to your project
+npx degit zerox9dev/ai-team .ai-team
+
+# 2. Describe your task
+echo "# Task: Add dark mode toggle" > .ai-team/.pipeline/001-task.md
+
+# 3. Open any AI and paste:
+```
 
 ```
-Read AGENTS.md and all files in .agents/, .skills/, and .contracts/.
-Task: .pipeline/001-task.md
+Read .ai-team/AGENTS.md
+Task: .ai-team/.pipeline/001-task.md
 Start with PM.
 ```
 
-5. Review each step → say "next" to continue
+**That's it.** The AI reads AGENTS.md → auto-loads all agents, contracts, skills, context → runs the pipeline. Say "next" after each step.
 
-That's it. No setup, no API keys, no config.
+> 📋 More prompts (quick fix, design only, continue from stage): see [START.md](START.md)
 
 ## Structure
 
@@ -62,6 +67,16 @@ That's it. No setup, no API keys, no config.
 │   ├── code.md              # Engineer output quality gate
 │   ├── qa.md                # QA output quality gate
 │   └── review.md            # Final review quality gate
+├── .templates/
+│   ├── saas.md              # Next.js + Supabase + Stripe + Vercel
+│   ├── landing.md           # Astro + Tailwind + Cloudflare
+│   ├── api.md               # Hono/FastAPI + PostgreSQL + Docker
+│   ├── mobile.md            # React Native + Expo + Supabase
+│   └── chrome-ext.md        # WXT + Manifest V3 + React
+├── .context/
+│   ├── decisions.md         # Architecture decisions log
+│   ├── lessons.md           # Past mistakes (don't repeat)
+│   └── glossary.md          # Domain-specific terms
 ├── .skills/
 │   ├── STACK.md             # Project tech stack context
 │   ├── STYLEGUIDE.md        # Design system & UI rules
@@ -101,6 +116,24 @@ The killer feature. Every agent validates their output against a contract before
 4. Same pattern for every stage
 
 Think of it as **TypeScript for your AI pipeline** — type-checking outputs between agents.
+
+## Templates
+
+Pre-configured stacks with real 2026 tooling. Tell your AI which template to use:
+
+```
+Read .ai-team/AGENTS.md
+Use template: .templates/saas.md
+Task: .ai-team/.pipeline/001-task.md
+```
+
+| Template | Stack | Best for |
+|----------|-------|----------|
+| `saas.md` | Next.js 16 + Supabase + Stripe + Vercel + shadcn/ui | SaaS apps, dashboards |
+| `landing.md` | Astro 5 + Tailwind v4 + Cloudflare Pages | Marketing pages, Product Hunt |
+| `api.md` | Hono or FastAPI + PostgreSQL + Docker | REST APIs, microservices |
+| `mobile.md` | React Native + Expo 52 + Expo Router | iOS + Android apps |
+| `chrome-ext.md` | WXT + Manifest V3 + React + Tailwind | Browser extensions |
 
 ## Skills
 
